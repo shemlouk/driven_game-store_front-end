@@ -1,5 +1,4 @@
 import RoundButton from "../../components/RoundButton";
-import { Link } from "react-router-dom";
 import * as S from "./style";
 
 const Header = () => {
@@ -10,12 +9,8 @@ const Header = () => {
         <S.LogoFont>Store</S.LogoFont>
       </div>
       <S.ButtonsContainer>
-        <Link to="/library">
-          <RoundButton name="game" />
-        </Link>
-        <Link to="/checkout">
-          <RoundButton name="cart" />
-        </Link>
+        <RoundButton name="game" path="/library" />
+        <RoundButton name="cart" path="/checkout" />
       </S.ButtonsContainer>
     </S.Container>
   );
