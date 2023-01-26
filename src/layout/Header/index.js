@@ -1,15 +1,16 @@
 import RoundButton from "../../components/RoundButton";
 import { PROFILES } from "../../services/constants";
 import SearchBar from "../../components/SearchBar";
+import { Link } from "react-router-dom";
 import * as S from "./style";
 
 const Header = () => {
   return (
     <S.Container>
-      <div>
+      <Link to="/">
         <S.LogoFont bColor="#FFD60A">Game</S.LogoFont>
         <S.LogoFont>Store</S.LogoFont>
-      </div>
+      </Link>
       <SearchBar />
       <S.ButtonsContainer>
         <RoundButton name="game" path="/library" />
