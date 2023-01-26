@@ -11,7 +11,8 @@ export const Container = styled.header`
   top: 0px;
   left: 0px;
   position: fixed;
-  border-bottom: 1px solid #c7d5e020;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid #c7d5e030;
 `;
 
 export const LogoFont = styled.span`
