@@ -31,3 +31,30 @@ export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const ProfilePicture = styled.div`
+  width: 70px;
+  height: 70px;
+  margin-left: 10px;
+  border-radius: 25px;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.2);
+  background: ${({ src }) => `url(${src})`} no-repeat center;
+  overflow: hidden;
+  background-size: cover;
+  background-color: #c7d5e0;
+  ::after {
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  :hover::after {
+    content: "change";
+    backdrop-filter: contrast(0.7);
+  }
+`;

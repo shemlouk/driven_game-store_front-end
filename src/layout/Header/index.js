@@ -1,4 +1,5 @@
 import RoundButton from "../../components/RoundButton";
+import { PROFILES } from "../../services/constants";
 import * as S from "./style";
 
 const Header = () => {
@@ -12,6 +13,9 @@ const Header = () => {
         <RoundButton name="game" path="/library" />
         <RoundButton name="cart" path="/checkout" />
       </S.ButtonsContainer>
+      <S.ProfilePicture
+        src={PROFILES[Math.floor(Math.random() * PROFILES.length)]}
+      />
     </S.Container>
   );
 };
