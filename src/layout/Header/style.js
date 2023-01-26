@@ -28,7 +28,7 @@ export const LogoFont = styled.span`
 `;
 
 export const ButtonsContainer = styled.div`
-  width: 180px;
+  width: 160px;
   display: flex;
   justify-content: space-between;
 `;
@@ -58,4 +58,36 @@ export const ProfilePicture = styled.div`
     content: "change";
     backdrop-filter: contrast(0.7);
   }
+`;
+
+export const SignButton = styled.p`
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  :hover {
+    text-decoration: underline;
+  }
+`;
+
+export const Username = styled.div`
+  min-width: 100px;
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+  text-align: end;
+  transition: 0.5s;
+  user-select: none;
+  p {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 25px;
+  }
+`;
+
+export const Wrap = styled.div`
+  min-width: 370px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
