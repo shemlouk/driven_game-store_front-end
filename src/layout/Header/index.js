@@ -1,5 +1,6 @@
 import RoundButton from "../../components/RoundButton";
 import { PROFILES } from "../../services/constants";
+import SearchBar from "../../components/SearchBar";
 import * as S from "./style";
 
 const Header = () => {
@@ -9,6 +10,7 @@ const Header = () => {
         <S.LogoFont bColor="#FFD60A">Game</S.LogoFont>
         <S.LogoFont>Store</S.LogoFont>
       </div>
+      <SearchBar />
       <S.ButtonsContainer>
         <RoundButton name="game" path="/library" />
         <RoundButton name="cart" path="/checkout" />
