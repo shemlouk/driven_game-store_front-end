@@ -49,6 +49,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+a {
+	text-decoration: none;
+}
 * {
   font-family: 'Montserrat', sans-serif !important;
   box-sizing: border-box !important;
