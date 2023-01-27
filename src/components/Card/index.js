@@ -4,7 +4,7 @@ import { useState } from "react";
 import * as S from "./style";
 import "atropos/css";
 
-const Card = ({ image, title }) => {
+const Card = ({ image, title, price }) => {
   const [productStatus, setProductStatus] = useState("");
 
   return (
@@ -36,6 +36,11 @@ const Card = ({ image, title }) => {
             Add to Cart
           </S.Button>
         )}
+        <S.Price data-atropos-offset="5">
+          {!price
+            ? "Free"
+            : "R$" + new Intl.NumberFormat("pt-BR").format(price)}
+        </S.Price>
       </S.Container>
     </Atropos>
   );

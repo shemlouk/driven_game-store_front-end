@@ -58,3 +58,21 @@ export const Button = styled.button`
   color: white;
   cursor: pointer;
 `;
+
+export const Price = styled.div`
+  width: 80px;
+  height: 40px;
+  background-color: #c7d5e030;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 30px;
+  left: 150px;
+  z-index: 1;
+  border-top: 1px solid #c7d5e050;
+  border-radius: 10px;
+  font-size: 12px;
+  user-select: none;
+  font-weight: 600;
+`;
