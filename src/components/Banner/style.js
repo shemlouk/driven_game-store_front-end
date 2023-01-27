@@ -6,7 +6,6 @@ export const Container = styled.div`
   height: 660px;
   overflow: hidden;
   position: relative;
-  margin-bottom: 40px;
 `;
 
 export const Image = styled.div`
@@ -24,6 +23,8 @@ export const Image = styled.div`
     height: 100%;
     content: " ";
     position: absolute;
+    top: 0px;
+    left: 0px;
     background: linear-gradient(to top, #000000 0%, transparent 70%);
   }
 `;
