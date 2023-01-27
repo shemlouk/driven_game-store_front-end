@@ -39,3 +39,22 @@ export const Title = styled.p`
   color: white;
   z-index: 1;
 `;
+
+export const Button = styled.button`
+  width: 120px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(
+    to bottom,
+    ${({ colors }) => colors && `${colors[0]}, ${colors[1]}`}
+  );
+  font-size: 15px;
+  font-weight: 700;
+  position: absolute;
+  left: 16px;
+  bottom: 30px;
+  z-index: 1;
+  color: white;
+  cursor: pointer;
+`;
