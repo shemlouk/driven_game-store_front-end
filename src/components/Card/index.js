@@ -1,5 +1,5 @@
+import { Star1, TickCircle } from "iconsax-react";
 import { Link } from "react-router-dom";
-import { InfoCircle, Star1, TickCircle } from "iconsax-react";
 import Atropos from "atropos/react";
 import { useState } from "react";
 import * as S from "./style";
