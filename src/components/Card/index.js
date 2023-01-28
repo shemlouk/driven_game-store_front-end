@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Star1 } from "iconsax-react";
+import { InfoCircle, Star1, TickCircle } from "iconsax-react";
 import Atropos from "atropos/react";
 import { useState } from "react";
 import * as S from "./style";
@@ -54,6 +54,20 @@ const Card = ({ image, title, price, score }) => {
           )}
           <span>{score?.toFixed(1)}</span>
         </S.Score>
+        {productStatus === "onLibrary" && (
+          <TickCircle
+            data-atropos-offset="5"
+            style={{
+              position: "absolute",
+              right: "16px",
+              bottom: "120px",
+              zIndex: "3",
+            }}
+            size="20"
+            color="#70e000"
+            variant="Bold"
+          />
+        )}
       </S.Container>
     </Atropos>
   );
