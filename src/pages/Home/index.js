@@ -1,8 +1,10 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Banner from "../../components/Banner";
+import Card from "../../components/Card";
 import Main from "../../layout/Main";
 import { useState } from "react";
+import * as S from "./style";
 
 const Home = () => {
   const [products, setProducts] = useState([
@@ -43,6 +45,14 @@ const Home = () => {
           <Banner key={i} {...p} />
         ))}
       </Carousel>
+      <S.SessionContainer>
+        <p>Destaques</p>
+        <S.CardList>
+          {products.map((p, i) => (
+            <Card key={i} {...p} />
+          ))}
+        </S.CardList>
+      </S.SessionContainer>
     </Main>
   );
 };
