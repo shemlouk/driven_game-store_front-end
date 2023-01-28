@@ -76,3 +76,21 @@ export const Price = styled.div`
   user-select: none;
   font-weight: 600;
 `;
+
+export const Score = styled.div`
+  height: 13px;
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  left: 16px;
+  bottom: 97px;
+  z-index: 1;
+  span {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffd60a;
+    margin-left: 10px;
+  }
+`;
