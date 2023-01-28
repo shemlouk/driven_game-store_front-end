@@ -37,11 +37,13 @@ const Card = ({ image, title, price, score }) => {
             Add to Cart
           </S.Button>
         )}
-        <S.Price data-atropos-offset="5">
-          {!price
-            ? "Free"
-            : "R$" + new Intl.NumberFormat("pt-BR").format(price)}
-        </S.Price>
+        {productStatus !== "onLibrary" && (
+          <S.Price data-atropos-offset="5">
+            {!price
+              ? "Free"
+              : "R$" + new Intl.NumberFormat("pt-BR").format(price)}
+          </S.Price>
+        )}
         <S.Score data-atropos-offset="5">
           {Array.from({ length: 5 }).map((_, i) =>
             i < score ? (
