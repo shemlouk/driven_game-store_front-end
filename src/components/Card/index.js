@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import { Star1 } from "iconsax-react";
 import Atropos from "atropos/react";
 import { useState } from "react";
 import * as S from "./style";
 import "atropos/css";
 
-const Card = ({ image, title, price }) => {
+const Card = ({ image, title, price, score }) => {
   const [productStatus, setProductStatus] = useState("");
 
   return (
@@ -41,6 +42,16 @@ const Card = ({ image, title, price }) => {
             ? "Free"
             : "R$" + new Intl.NumberFormat("pt-BR").format(price)}
         </S.Price>
+        <S.Score data-atropos-offset="5">
+          {Array.from({ length: 5 }).map((_, i) =>
+            i < score ? (
+              <Star1 key={i} size="15" color="#FFD60A" variant="Bold" />
+            ) : (
+              <Star1 key={i} size="15" color="#c7d5e0" variant="Bold" />
+            )
+          )}
+          <span>{score?.toFixed(1)}</span>
+        </S.Score>
       </S.Container>
     </Atropos>
   );
