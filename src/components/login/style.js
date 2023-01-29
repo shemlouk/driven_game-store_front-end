@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Login = styled.div`
-  position: absolute;
+  position: fixed;
   top: 126px;
   right: 50px;
 

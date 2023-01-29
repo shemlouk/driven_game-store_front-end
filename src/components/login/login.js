@@ -96,6 +96,8 @@ export default function Login() {
             onClick={() => {
               value.setValue(true);
               value.setValue2(false);
+              setEmail("");
+              setPassword("");
             }}
           >
             I already have an accoount

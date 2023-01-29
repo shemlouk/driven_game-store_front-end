@@ -3,11 +3,14 @@ import { Carousel } from "react-responsive-carousel";
 import Banner from "../../components/Banner";
 import Card from "../../components/Card";
 import Main from "../../layout/Main";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import * as S from "./style";
+import Login from "../../components/login/login";
+import { AuthContext } from "../../provider/provider";
 
 const Home = () => {
 
+  const value = useContext(AuthContext)
   const [products, setProducts] = useState([
     {
       title: "Minecraft Legends",
@@ -38,8 +41,7 @@ const Home = () => {
   }
 
   return (
-    <Main onClick={clicked}>
-
+    <Main onClick={value.clicked}>
       <Carousel
         {...{
           infiniteLoop: true,
