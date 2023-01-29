@@ -1,17 +1,15 @@
 import RoundButton from "../../components/RoundButton";
+import { AuthContext } from "../../provider/provider";
+import { useRef, useState, useContext } from "react";
 import { PROFILES } from "../../services/constants";
 import SearchBar from "../../components/SearchBar";
-import { Link } from "react-router-dom";
-import React, { useRef, useState } from "react";
-import * as S from "./style";
-import { AuthContext } from "../../provider/provider";
 import Login from "../../components/Login";
+import { Link } from "react-router-dom";
+import * as S from "./style";
 
 const Header = () => {
+  const value = useContext(AuthContext);
   const [name, setName] = useState("");
-
-  const value = React.useContext(AuthContext);
-
   const loginRef2 = useRef(null);
 
   function showLogin() {
@@ -42,7 +40,7 @@ const Header = () => {
                 <RoundButton name="cart" path="/checkout" />
               </S.ButtonsContainer>
               <S.Username>
-                Welcome
+                Bem-vindo
                 <p>{name}</p>
               </S.Username>
             </>
