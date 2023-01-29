@@ -2,11 +2,19 @@ import RoundButton from "../../components/RoundButton";
 import { PROFILES } from "../../services/constants";
 import SearchBar from "../../components/SearchBar";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 import * as S from "./style";
+import { AuthContext } from "../../provider/provider";
 
 const Header = () => {
   const [name, setName] = useState("");
+
+  const value = React.useContext(AuthContext)
+
+  function showLogin() {
+    value.setValue(true);
+  }
+
   return (
     <S.Container>
       <Link to="/">
@@ -20,7 +28,7 @@ const Header = () => {
           <RoundButton name="cart" path="/checkout" />
         </S.ButtonsContainer>
         {!name ? (
-          <S.SignButton>Login</S.SignButton>
+          <S.SignButton onClick={showLogin}>Login</S.SignButton>
         ) : (
           <S.Username>
             Welcome
