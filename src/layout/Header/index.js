@@ -31,17 +31,20 @@ const Header = () => {
       </Link>
       <SearchBar />
       <S.Wrap>
-        <S.ButtonsContainer>
-          <RoundButton name="game" path="/library" />
-          <RoundButton name="cart" path="/checkout" />
-        </S.ButtonsContainer>
+
         {!name ? (
           <S.SignButton ref={value.loginRef} onClick={() => value.setValue2(false)}>Login</S.SignButton>
         ) : (
+          <>
+          <S.ButtonsContainer>
+            <RoundButton name="game" path="/library" />
+            <RoundButton name="cart" path="/checkout" />
+          </S.ButtonsContainer>
           <S.Username>
             Welcome
             <p>{name}</p>
           </S.Username>
+          </>
         )}
         <S.ProfilePicture
           src={PROFILES[Math.floor(Math.random() * PROFILES.length)]}

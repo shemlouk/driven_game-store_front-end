@@ -37,7 +37,7 @@ export const ButtonsContainer = styled.div`
 export const ProfilePicture = styled.div`
   width: 70px;
   height: 70px;
-  margin-left: 10px;
+  margin-left: 30px;
   border-radius: 25px;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.2);
   background: ${({ src }) => `url(${src})`} no-repeat center;
@@ -90,5 +90,5 @@ export const Wrap = styled.div`
   min-width: 370px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: right;
 `;
