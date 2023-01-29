@@ -18,7 +18,7 @@ export const Login = styled.div`
   flex-direction: column;
   gap: 17px;
 
-  z-index: 1;
+  z-index: 3;
 
   box-sizing: border-box;
 
@@ -26,62 +26,61 @@ export const Login = styled.div`
     width: 80%;
     height: 56px;
 
-    border: 0;
-    border-image-source: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.8) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.8) 0%,
-        rgba(255, 255, 255, 0) 100%
-      ),
-      linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+    border: none;
+    border-top: 1px solid #ffffff90;
+    background: #ffffff80;
 
-    border-color: #ffffff;
     border-radius: 12px;
     padding-left: 24px;
 
-    font-size: 22px;
-    font-weight: 400;
-    color: #2a475e;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+
+    ::placeholder {
+      color: #2a475e;
+      font-weight: 400;
+    }
+
+    :focus {
+      outline: none;
+    }
   }
   button {
     width: 50%;
     height: 47px;
 
     color: #ffffff;
-    font-size: 22px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 700;
 
-    border: 0px;
-    background: linear-gradient(0deg, #66c0f4, #66c0f4),
-      linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.8) 0%,
-        rgba(255, 255, 255, 0) 100%
-      );
-    border: 1px solid;
-
-    border-image-source: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.8) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
+    border: none;
+    background: #66c0f4;
+    border-top: 1px solid #ffffff90;
 
     border-radius: 12px;
+    transition: 0.3s;
+
+    :hover {
+      background-color: #4192C0;
+    }
   }
-  P {
+  p {
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     line-height: 17px;
     text-align: center;
 
-    color: #ffffff;
+    color: #f1f1f1;
+
+    :hover {
+      text-decoration: underline;
+    }
   }
 `;
 
 export const SignUp = styled(Login)`
-    height: 450px;
-`
+  height: 450px;
+`;
