@@ -5,12 +5,10 @@ import Card from "../../components/Card";
 import Main from "../../layout/Main";
 import { useState, useContext } from "react";
 import * as S from "./style";
-import Login from "../../components/login/login";
 import { AuthContext } from "../../provider/provider";
 
 const Home = () => {
-
-  const value = useContext(AuthContext)
+  const value = useContext(AuthContext);
   const [products, setProducts] = useState([
     {
       title: "Minecraft Legends",
@@ -34,10 +32,8 @@ const Home = () => {
     },
   ]);
 
-
-
-  function clicked(e){
-    console.log(e.currentTarget)
+  function clicked(e) {
+    console.log(e.currentTarget);
   }
 
   return (

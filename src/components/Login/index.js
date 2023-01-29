@@ -1,14 +1,14 @@
-import React, {useState, useContext} from "react";
 import { AuthContext } from "../../provider/provider";
+import { useState, useContext } from "react";
 import * as S from "./style";
 import axios from "axios";
 
 export default function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [name, setName] = useState("");
-    const [img, setImg] = useState("");
-    const value = React.useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [img, setImg] = useState("");
+  const value = useContext(AuthContext);
 
   function login() {
     const dados = {
