@@ -87,7 +87,8 @@ export const Username = styled.div`
 `;
 
 export const Wrap = styled.div`
-  min-width: 370px;
+  margin-left: 20px;
+  max-width: 370px;
   display: flex;
   align-items: center;
   justify-content: right;
