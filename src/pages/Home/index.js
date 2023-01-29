@@ -1,11 +1,11 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { AuthContext } from "../../provider/provider";
 import { Carousel } from "react-responsive-carousel";
+import { useState, useContext } from "react";
 import Banner from "../../components/Banner";
 import Card from "../../components/Card";
 import Main from "../../layout/Main";
-import { useState, useContext } from "react";
 import * as S from "./style";
-import { AuthContext } from "../../provider/provider";
 
 const Home = () => {
   const value = useContext(AuthContext);
@@ -31,10 +31,6 @@ const Home = () => {
         "https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/VAL_2560x1440-a875b64f871200771ee9397df1d7050b",
     },
   ]);
-
-  function clicked(e) {
-    console.log(e.currentTarget);
-  }
 
   return (
     <Main onClick={value.clicked}>
