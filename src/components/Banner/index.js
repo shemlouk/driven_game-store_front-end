@@ -1,14 +1,12 @@
 import * as S from "./style";
 
-const Banner = ({ image, title, number }) => {
+const Banner = ({ _id, image, name, price }) => {
   return (
     <S.Container>
       <S.Image src={image} />
-      <S.Title>{title}</S.Title>
+      <S.Title>{name}</S.Title>
       <S.Price>
-        {!number
-          ? "Free"
-          : "R$" + new Intl.NumberFormat("pt-BR").format(number)}
+        {!price ? "Free" : "R$ " + new Intl.NumberFormat("pt-BR").format(price)}
       </S.Price>
       <S.Button>Buy</S.Button>
     </S.Container>
