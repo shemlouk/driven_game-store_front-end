@@ -14,7 +14,6 @@ const Header = () => {
 
   const loginRef2 = useRef(null);
 
-  console.log(loginRef2);
   function showLogin() {
     value.setValue(true);
   }
