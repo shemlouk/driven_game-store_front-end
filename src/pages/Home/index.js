@@ -4,7 +4,7 @@ import Banner from "../../components/Banner";
 import Main from "../../layout/Main";
 import React, { useState } from "react";
 import { AuthContext } from "../../provider/provider";
-import { Login, SignUp } from "./style";
+import * as S from "./style";
 import axios from "axios";
 
 const Home = () => {
@@ -70,7 +70,7 @@ const Home = () => {
   return (
     <Main>
       {value.value && (
-        <Login>
+        <S.Login>
           <input
             placeholder="Email"
             value={email}
@@ -93,10 +93,10 @@ const Home = () => {
           >
             I don't have an accoount
           </p>
-        </Login>
+        </S.Login>
       )}
       {value.value2 && (
-        <SignUp>
+        <S.SignUp>
           <input
             placeholder="name"
             value={name}
@@ -127,7 +127,7 @@ const Home = () => {
           >
             I already have an accoount
           </p>
-        </SignUp>
+        </S.SignUp>
       )}
       <Carousel
         {...{
