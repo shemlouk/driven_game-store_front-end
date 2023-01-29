@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Login = styled.div`
+export const Login = styled.form`
   position: fixed;
   top: 126px;
   right: 50px;
