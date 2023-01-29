@@ -12,26 +12,19 @@ const Header = () => {
 
   const value = React.useContext(AuthContext)
 
-  const loginRef = useRef(null)
+  const loginRef2 = useRef(null)
 
+  console.log(loginRef2)
   function showLogin() {
     value.setValue(true);
   }
 
-  function clicked(e){
-    console.log(e.currentTarget)
-    console.log(e.target)
-    if(e.target === loginRef.current){
-      console.log("correto")
-      return value.setValue(true)
-    }
-    console.log("errado")
-    return value.setValue(false)
-  }
+
 
   return (
-    <S.Container onClick={clicked}>
-      <Login />
+    <>
+    <Login />
+    <S.Container onClick={value.clicked}>
       <Link to="/">
         <S.LogoFont bColor="#FFD60A">Game</S.LogoFont>
         <S.LogoFont>Store</S.LogoFont>
@@ -43,7 +36,7 @@ const Header = () => {
           <RoundButton name="cart" path="/checkout" />
         </S.ButtonsContainer>
         {!name ? (
-          <S.SignButton ref={loginRef}>Login</S.SignButton>
+          <S.SignButton ref={value.loginRef} onClick={() => value.setValue2(false)}>Login</S.SignButton>
         ) : (
           <S.Username>
             Welcome
@@ -55,6 +48,7 @@ const Header = () => {
         />
       </S.Wrap>
     </S.Container>
+    </>
   );
 };
 
