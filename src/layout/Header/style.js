@@ -13,7 +13,7 @@ export const Container = styled.header`
   position: fixed;
   backdrop-filter: blur(20px);
   border-bottom: 1px solid #c7d5e030;
-  z-index: 1;
+  z-index: 2;
 `;
 
 export const LogoFont = styled.span`
