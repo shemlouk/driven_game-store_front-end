@@ -10,9 +10,11 @@ function App() {
   const [session, setSession] = useState(null);
   const [library, setLibrary] = useState([]);
   const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
+
   return (
     <SessionContext.Provider value={{ ...session, setSession }}>
-      <ProductsContext.Provider value={{ cart, setCart, library, setLibrary }}>
+      <ProductsContext.Provider value={{ cart, setCart, products, setProducts, library, setLibrary }}>
         <BrowserRouter>
           <Header />
           <Routes>

@@ -22,7 +22,7 @@ export const GameCard = styled.div`
 export const GameImage = styled.div`
    width: 212px;
    height: 116px;
-   background: linear-gradient(270deg, #11151F 7.58%, rgba(0, 0, 0, 0) 48.3%), url("https://image.api.playstation.com/vulcan/ap/rnd/202008/1020/bzmUpd4O5o7GtuqKE1kCDFse.jpg");
+   background: linear-gradient(270deg, #11151F 7.58%, rgba(0, 0, 0, 0) 48.3%), url(${props => props.url});
    background-size: cover;
 `
 
