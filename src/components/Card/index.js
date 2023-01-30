@@ -5,7 +5,7 @@ import { useState } from "react";
 import * as S from "./style";
 import "atropos/css";
 
-const Card = ({ image, title, price, score }) => {
+const Card = ({ _id, image, name, price, score }) => {
   const [productStatus, setProductStatus] = useState("");
 
   return (
@@ -17,7 +17,7 @@ const Card = ({ image, title, price, score }) => {
     >
       <S.Container>
         <S.Image data-atropos-offset="-5" src={image} />
-        <S.Title data-atropos-offset="5">{title}</S.Title>
+        <S.Title data-atropos-offset="5">{name}</S.Title>
         {productStatus === "onLibrary" && (
           <Link to="/library">
             <S.Button data-atropos-offset="5" colors={["#66C0F4", "#4192C0"]}>
@@ -41,7 +41,7 @@ const Card = ({ image, title, price, score }) => {
           <S.Price data-atropos-offset="5">
             {!price
               ? "Free"
-              : "R$" + new Intl.NumberFormat("pt-BR").format(price)}
+              : "R$ " + new Intl.NumberFormat("pt-BR").format(price)}
           </S.Price>
         )}
         <S.Score data-atropos-offset="5">

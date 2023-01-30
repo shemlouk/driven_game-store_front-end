@@ -35,7 +35,7 @@ export const Title = styled.p`
   font-weight: 700;
   position: absolute;
   left: 16px;
-  bottom: 120px;
+  bottom: 100px;
   color: white;
   z-index: 1;
 `;
