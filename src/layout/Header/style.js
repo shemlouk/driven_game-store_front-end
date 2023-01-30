@@ -72,17 +72,40 @@ export const SignButton = styled.p`
 `;
 
 export const Username = styled.div`
+  margin-left: 20px;
   min-width: 100px;
   font-size: 14px;
   color: white;
   font-weight: 500;
   text-align: end;
-  transition: 0.5s;
   user-select: none;
+  position: relative;
   p {
     font-size: 22px;
     font-weight: 700;
     line-height: 25px;
+  }
+  ::after {
+    content: "Logout";
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  :hover {
+    color: transparent;
+    ::after {
+      display: flex;
+      color: white;
+      text-decoration: underline;
+    }
   }
 `;
 

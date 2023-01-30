@@ -30,6 +30,11 @@ const Header = () => {
     }
   }, [session]);
 
+  const signOut = useCallback(() => {
+    if (!window.confirm("Tem certeza que quer sair?")) return;
+    session.setSession(null);
+  });
+
   return (
     <>
       <Login />
@@ -53,10 +58,10 @@ const Header = () => {
                 <RoundButton
                   name="cart"
                   path="/checkout"
-                  number={cart.length}
+                  number={cart?.length}
                 />
               </S.ButtonsContainer>
-              <S.Username>
+              <S.Username onClick={signOut}>
                 Bem-vindo
                 <p>{session.name}</p>
               </S.Username>
