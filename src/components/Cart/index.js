@@ -3,10 +3,11 @@ import { Star1 } from "iconsax-react";
 import { Windows, Apple } from "iconsax-react"
 
 
-const Cart = () => {
-    return (
-        <>
-        <Title>Summary</Title>
+const Cart = ({ handleClick, componentToShow }) => {
+  return (
+ 
+    <div componentToShow={componentToShow}>
+      <Title>Summary</Title>
       <GameCard>
         <GameImage />
         <ContInfos>
@@ -28,14 +29,15 @@ const Cart = () => {
       </GameCard>
 
       <ContFinalPrice>
-      <FinalPrice>
-        <Total>Total: </Total>
-        <TotalPrice>R$314,65</TotalPrice>
-      </FinalPrice>
-      <ConfirmButton>Confirm</ConfirmButton>
+        <FinalPrice>
+          <Total>Total: </Total>
+          <TotalPrice>R$314,65</TotalPrice>
+        </FinalPrice>
+        <ConfirmButton onClick={handleClick}>Confirm</ConfirmButton>
       </ContFinalPrice>
-      </>
-    )
+      </div>
+
+  )
 }
 
 export default Cart;

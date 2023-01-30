@@ -1,15 +1,24 @@
-import { Title, PayMethod, ConfirmButton } from "./style";
+import { Container, Title, PayMethod, ConfirmButton } from "./style";
+import { useState } from "react";
 
-const Payment = () => {
+const Payment = ({ handleClick, componentToShow}) => {
+    const [color, setColor] = useState("#1A1E26");
+
+    const handleColor = () => {
+        setColor(color === "#1A1E26" ? "#70E000" : "#1A1E26");
+    }
+
     return (
-        <>
-            <Title>Payment</Title>
+   
+            <Container componentToShow={componentToShow}>
+                <Title>Payment</Title>
 
-            <PayMethod>Credit Card</PayMethod>
-            <PayMethod>Paypal</PayMethod>
-            <PayMethod>PIX</PayMethod>
-            <ConfirmButton>Confirm</ConfirmButton>
-        </>
+                <PayMethod color={color} onClick={handleColor}>Credit Card</PayMethod>
+                <PayMethod color={color} onClick={handleColor}>Paypal</PayMethod>
+                <PayMethod color={color} onClick={handleColor}>PIX</PayMethod>
+                <ConfirmButton onClick={handleClick}>Confirm</ConfirmButton>
+            </Container>
+        
     )
 }
 

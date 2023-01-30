@@ -1,6 +1,16 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
 const Title = styled.h1`
+    margin-top: 15px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
@@ -46,6 +56,11 @@ const LibraryButton = styled.button`
     line-height: 24px;
     text-align: center;
     color: #FFFFFF;
+
+    a{
+    color: white;
+    text-decoration: none;
+    }
 `
 
 export {
