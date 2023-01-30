@@ -24,14 +24,14 @@ const Card = ({ _id, image, name, price, score }) => {
       cart.push(_id);
       setCart([...cart]);
       setIsLoading(false);
-    } catch ({ error }) {
+    } catch ({ response }) {
       setIsLoading(false);
-      console.log(error);
+      console.log(response);
     }
   }, []);
 
   useEffect(() => {
-    if (cart.includes(_id)) setProductStatus("onCart");
+    if (cart?.includes(_id)) setProductStatus("onCart");
   }, [cart]);
 
   return (

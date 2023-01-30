@@ -28,9 +28,9 @@ const Home = () => {
       const productsOnCart = await axios.get(`${API_BASE_URL}/cart`, config);
       setCart(productsOnCart.data.products);
       setIsLoading(false);
-    } catch ({ error }) {
+    } catch ({ response }) {
       setIsLoading(false);
-      console.log(error);
+      console.log(response);
     }
   });
 
