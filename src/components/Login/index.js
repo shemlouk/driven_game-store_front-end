@@ -1,14 +1,19 @@
+import SessionContext from "../../hooks/SessionContext";
+import { API_BASE_URL } from "../../services/constants";
 import { AuthContext } from "../../provider/provider";
 import { useState, useContext } from "react";
+import ModalSpinner from "../ModalSpinner";
 import * as S from "./style";
 import axios from "axios";
 
-export default function Login({ setSession }) {
+export default function Login() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [img, setImg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const value = useContext(AuthContext);
+  const { setSession } = useContext(SessionContext);
 
   function login(e) {
     e.preventDefault();
@@ -17,8 +22,10 @@ export default function Login({ setSession }) {
       password: password,
     };
 
+    setIsLoading(true);
+
     axios
-      .post(`${process.env.REACT_APP_API_BASE_URL}/login`, dados)
+      .post(`${API_BASE_URL}/login`, dados)
       .then(({ data: { token, email, name, image } }) => {
         setSession({
           email,
@@ -26,9 +33,11 @@ export default function Login({ setSession }) {
           image,
           config: { headers: { Authorization: `Bearer ${token}` } },
         });
-
+        value.setValue(false);
+        setIsLoading(false);
       })
       .catch((err) => {
+        setIsLoading(false);
         console.log(err.response);
       });
   }
@@ -41,14 +50,18 @@ export default function Login({ setSession }) {
       password: password,
       img: img ? img : "http://test",
     };
-    console.log(dados);
+    setIsLoading(true);
     axios
-      .post(`${process.env.REACT_APP_API_BASE_URL}/sign-up`, dados)
+      .post(`${API_BASE_URL}/sign-up`, dados)
       .then((crr) => {
         console.log(crr.data);
+        value.setValue2(false);
+        value.setValue(true);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err.response);
+        setIsLoading(false);
       });
   }
 
@@ -56,6 +69,7 @@ export default function Login({ setSession }) {
     <>
       {value.value && (
         <S.Login onSubmit={login}>
+          {isLoading && <ModalSpinner />}
           <input
             placeholder="Email"
             value={email}
@@ -86,6 +100,7 @@ export default function Login({ setSession }) {
 
       {value.value2 && (
         <S.SignUp onSubmit={signUp}>
+          {isLoading && <ModalSpinner />}
           <input
             placeholder="Nome"
             value={name}

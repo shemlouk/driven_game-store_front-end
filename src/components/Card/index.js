@@ -1,12 +1,38 @@
+import { useCallback, useContext, useEffect, useState } from "react";
+import ProductsContext from "../../hooks/ProductsContext";
+import { API_BASE_URL } from "../../services/constants";
+import SessionContext from "../../hooks/SessionContext";
 import { Star1, TickCircle } from "iconsax-react";
+import ButtonSpinner from "../ButtonSpinner";
 import { Link } from "react-router-dom";
 import Atropos from "atropos/react";
-import { useState } from "react";
 import * as S from "./style";
+import axios from "axios";
 import "atropos/css";
 
 const Card = ({ _id, image, name, price, score }) => {
   const [productStatus, setProductStatus] = useState("");
+  const { cart, setCart } = useContext(ProductsContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const { config } = useContext(SessionContext);
+
+  const addToCart = useCallback(async () => {
+    if (!config) return alert("Você deve se logar para comprar");
+    setIsLoading(true);
+    try {
+      await axios.put(`${API_BASE_URL}/cart`, { id: _id }, config);
+      cart.push(_id);
+      setCart([...cart]);
+      setIsLoading(false);
+    } catch ({ error }) {
+      setIsLoading(false);
+      console.log(error);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (cart.includes(_id)) setProductStatus("onCart");
+  }, [cart]);
 
   return (
     <Atropos
@@ -33,8 +59,12 @@ const Card = ({ _id, image, name, price, score }) => {
           </Link>
         )}
         {!productStatus && (
-          <S.Button data-atropos-offset="5" colors={["#70e000", "#549c0b"]}>
-            Add to Cart
+          <S.Button
+            onClick={addToCart}
+            data-atropos-offset="5"
+            colors={["#70e000", "#549c0b"]}
+          >
+            {isLoading ? <ButtonSpinner /> : "Add to Cart"}
           </S.Button>
         )}
         {productStatus !== "onLibrary" && (

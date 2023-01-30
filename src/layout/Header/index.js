@@ -1,47 +1,45 @@
+import { API_BASE_URL, PROFILES } from "../../services/constants";
+import ProductsContext from "../../hooks/ProductsContext";
 import SessionContext from "../../hooks/SessionContext";
+import { useCallback, useContext, useRef } from "react";
 import RoundButton from "../../components/RoundButton";
 import { AuthContext } from "../../provider/provider";
-import { PROFILES } from "../../services/constants";
-import SearchBar from "../../components/SearchBar";
 import Login from "../../components/Login";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
 import * as S from "./style";
 import axios from "axios";
 
-const Header = ({ setSession }) => {
-  const { config, name, image, email } = useContext(SessionContext);
+const Header = () => {
+  const { cart } = useContext(ProductsContext);
+  const session = useContext(SessionContext);
   const value = useContext(AuthContext);
+  const refImage = useRef(
+    PROFILES[Math.floor(Math.random() * PROFILES.length)]
+  );
 
-  function updatePhoto() {
+  const updateProfilePicture = useCallback(async () => {
     const newImage = prompt("Coloque a URL da imagem");
     if (!newImage) return;
-    axios
-      .post(
-        `${process.env.REACT_APP_API_BASE_URL}/update-img`,
-        { img: newImage },
-        config
-      )
-      .then(() => {
-        setSession({ image: newImage, email, name, config });
-      })
-      .catch(({ response }) => {
-        console.log(response);
-      });
-
-  }
+    const { config, setSession } = session;
+    if (!config) return alert("Precisa se logar para troca de imagem!");
+    try {
+      await axios.post(`${API_BASE_URL}/update-img`, { img: newImage }, config);
+      setSession({ ...session, image: newImage });
+    } catch ({ response }) {
+      console.log(response);
+    }
+  }, [session]);
 
   return (
     <>
-      <Login {...{ setSession }} />
+      <Login />
       <S.Container onClick={value.clicked}>
         <Link to="/">
           <S.LogoFont bColor="#FFD60A">Game</S.LogoFont>
           <S.LogoFont>Store</S.LogoFont>
         </Link>
-        <SearchBar />
         <S.Wrap>
-          {!name ? (
+          {!session.name ? (
             <S.SignButton
               ref={value.loginRef}
               onClick={() => value.setValue2(false)}
@@ -52,21 +50,21 @@ const Header = ({ setSession }) => {
             <>
               <S.ButtonsContainer>
                 <RoundButton name="game" path="/library" />
-                <RoundButton name="cart" path="/checkout" />
+                <RoundButton
+                  name="cart"
+                  path="/checkout"
+                  number={cart.length}
+                />
               </S.ButtonsContainer>
               <S.Username>
                 Bem-vindo
-                <p>{name}</p>
+                <p>{session.name}</p>
               </S.Username>
             </>
           )}
           <S.ProfilePicture
-            onClick={updatePhoto}
-            src={
-              image
-                ? image
-                : PROFILES[Math.floor(Math.random() * PROFILES.length)]
-            }
+            onClick={updateProfilePicture}
+            src={session.image ? session.image : refImage.current}
           />
         </S.Wrap>
       </S.Container>

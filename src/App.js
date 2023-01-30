@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProductsContext from "./hooks/ProductsContext";
 import SessionContext from "./hooks/SessionContext";
 import Checkout from "./pages/Checkout";
 import Header from "./layout/Header";
@@ -7,15 +8,19 @@ import Home from "./pages/Home";
 
 function App() {
   const [session, setSession] = useState(null);
+  const [library, setLibrary] = useState([]);
+  const [cart, setCart] = useState([]);
   return (
-    <SessionContext.Provider value={{ ...session }}>
-      <BrowserRouter>
-        <Header {...{ setSession }} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/checkout" element={<Checkout />} />
-        </Routes>
-      </BrowserRouter>
+    <SessionContext.Provider value={{ ...session, setSession }}>
+      <ProductsContext.Provider value={{ cart, setCart, library, setLibrary }}>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Routes>
+        </BrowserRouter>
+      </ProductsContext.Provider>
     </SessionContext.Provider>
   );
 }

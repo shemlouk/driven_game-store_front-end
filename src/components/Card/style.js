@@ -57,6 +57,8 @@ export const Button = styled.button`
   z-index: 1;
   color: white;
   cursor: pointer;
+  padding: 0px;
+  overflow: hidden;
 `;
 
 export const Price = styled.div`

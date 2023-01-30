@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Login = styled.form`
+  overflow: hidden;
   position: fixed;
   top: 126px;
   right: 50px;
@@ -63,7 +64,7 @@ export const Login = styled.form`
     transition: 0.3s;
 
     :hover {
-      background-color: #4192C0;
+      background-color: #4192c0;
     }
   }
   p {
