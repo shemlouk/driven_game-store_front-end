@@ -3,6 +3,7 @@ import LoaderSpinner from "../../components/LoaderSpinner";
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../provider/provider";
 import { Carousel } from "react-responsive-carousel";
+import { useState, useContext } from "react";
 import Banner from "../../components/Banner";
 import Card from "../../components/Card";
 import Main from "../../layout/Main";

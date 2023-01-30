@@ -16,6 +16,7 @@ export default function Login({ setSession }) {
       email: email,
       password: password,
     };
+
     axios
       .post(`${process.env.REACT_APP_API_BASE_URL}/login`, dados)
       .then(({ data: { token, email, name, image } }) => {
@@ -25,6 +26,7 @@ export default function Login({ setSession }) {
           image,
           config: { headers: { Authorization: `Bearer ${token}` } },
         });
+
       })
       .catch((err) => {
         console.log(err.response);

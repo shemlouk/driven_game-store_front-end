@@ -28,6 +28,7 @@ const Header = ({ setSession }) => {
       .catch(({ response }) => {
         console.log(response);
       });
+
   }
 
   return (
