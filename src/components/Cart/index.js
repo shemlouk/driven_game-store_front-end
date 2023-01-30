@@ -3,7 +3,7 @@ import { Star1 } from "iconsax-react";
 import { Windows, Apple } from "iconsax-react"
 
 
-export default function Cart() {
+const Cart = () => {
     return (
         <>
         <Title>Summary</Title>
@@ -37,3 +37,5 @@ export default function Cart() {
       </>
     )
 }
+
+export default Cart;
