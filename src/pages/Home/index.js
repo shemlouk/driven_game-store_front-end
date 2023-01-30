@@ -62,7 +62,7 @@ const Home = () => {
             <p>Destaques</p>
             <S.CardList>
               {products.map((p) => (
-                <Card key={p._id} {...p} {...{ cart, setCart }} />
+                <Card key={p._id} {...p} />
               ))}
             </S.CardList>
           </S.SessionContainer>
