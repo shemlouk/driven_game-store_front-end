@@ -1,6 +1,9 @@
+import { useState, useContext, useEffect, useCallback } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import LoaderSpinner from "../../components/LoaderSpinner";
-import { useState, useContext, useEffect } from "react";
+import ProductsContext from "../../hooks/ProductsContext";
+import SessionContext from "../../hooks/SessionContext";
+import { API_BASE_URL } from "../../services/constants";
 import { AuthContext } from "../../provider/provider";
 import { Carousel } from "react-responsive-carousel";
 import Banner from "../../components/Banner";
@@ -10,21 +13,30 @@ import * as S from "./style";
 import axios from "axios";
 
 const Home = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const { cart, setCart } = useContext(ProductsContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const { config } = useContext(SessionContext);
   const [products, setProducts] = useState([]);
   const value = useContext(AuthContext);
 
+  const getData = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const { data } = await axios.get(`${API_BASE_URL}/products`);
+      setProducts(data);
+      if (!config) return setIsLoading(false);
+      const productsOnCart = await axios.get(`${API_BASE_URL}/cart`, config);
+      setCart(productsOnCart.data);
+      setIsLoading(false);
+    } catch ({ error }) {
+      setIsLoading(false);
+      console.log(error);
+    }
+  });
+
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_BASE_URL}/products`)
-      .then(({ data }) => {
-        setProducts(data);
-        setIsLoading(false);
-      })
-      .catch(({ response }) => {
-        console.log(response);
-      });
-  }, []);
+    getData();
+  }, [config]);
 
   return (
     <Main onClick={value.clicked}>
@@ -42,15 +54,15 @@ const Home = () => {
               interval: 5000,
             }}
           >
-            {products.slice(0, 3).map((p, i) => (
-              <Banner key={i} {...p} />
+            {products.slice(0, 3).map((p) => (
+              <Banner key={p._id} {...p} />
             ))}
           </Carousel>
           <S.SessionContainer>
             <p>Destaques</p>
             <S.CardList>
-              {products.map((p, i) => (
-                <Card key={i} {...p} />
+              {products.map((p) => (
+                <Card key={p._id} {...p} {...{ cart, setCart }} />
               ))}
             </S.CardList>
           </S.SessionContainer>
