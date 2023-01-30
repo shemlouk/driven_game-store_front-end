@@ -13,7 +13,7 @@ import * as S from "./style";
 import axios from "axios";
 
 const Home = () => {
-  const { cart, setCart } = useContext(ProductsContext);
+  const { setCart } = useContext(ProductsContext);
   const [isLoading, setIsLoading] = useState(false);
   const { config } = useContext(SessionContext);
   const [products, setProducts] = useState([]);
@@ -26,7 +26,7 @@ const Home = () => {
       setProducts(data);
       if (!config) return setIsLoading(false);
       const productsOnCart = await axios.get(`${API_BASE_URL}/cart`, config);
-      setCart(productsOnCart.data);
+      setCart(productsOnCart.data.products);
       setIsLoading(false);
     } catch ({ error }) {
       setIsLoading(false);
