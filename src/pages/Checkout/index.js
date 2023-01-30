@@ -7,9 +7,9 @@ const Checkout = () => {
   return (
   <>
     <Container>
-      {/* <Cart/> */}
+      <Cart /> 
       {/* <Payment /> */}
-      <Email/>
+      {/* <Email/> */} 
     </Container>
   </>
 )};
