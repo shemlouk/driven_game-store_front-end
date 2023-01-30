@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import * as S from "./style";
 import axios from "axios";
 
-export default function Login() {
+export default function Login({ setSession }) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -16,11 +16,15 @@ export default function Login() {
       email: email,
       password: password,
     };
-    console.log(dados);
     axios
       .post(`${process.env.REACT_APP_API_BASE_URL}/login`, dados)
-      .then((crr) => {
-        console.log(crr.data);
+      .then(({ data: { token, email, name, image } }) => {
+        setSession({
+          email,
+          name,
+          image,
+          config: { headers: { Authorization: `Bearer ${token}` } },
+        });
       })
       .catch((err) => {
         console.log(err.response);
