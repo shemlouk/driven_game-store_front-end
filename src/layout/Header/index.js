@@ -1,13 +1,13 @@
-import { API_BASE_URL, PROFILES } from "../../services/constants";
+import axios from "axios";
+import { useCallback, useContext, useRef } from "react";
+import { Link } from "react-router-dom";
+import Login from "../../components/Login";
+import RoundButton from "../../components/RoundButton";
 import ProductsContext from "../../hooks/ProductsContext";
 import SessionContext from "../../hooks/SessionContext";
-import { useCallback, useContext, useRef } from "react";
-import RoundButton from "../../components/RoundButton";
 import { AuthContext } from "../../provider/provider";
-import Login from "../../components/Login";
-import { Link } from "react-router-dom";
+import { API_BASE_URL, PROFILES } from "../../services/constants";
 import * as S from "./style";
-import axios from "axios";
 
 const Header = () => {
   const { cart } = useContext(ProductsContext);
@@ -54,7 +54,6 @@ const Header = () => {
           ) : (
             <>
               <S.ButtonsContainer>
-                <RoundButton name="game" path="/library" />
                 <RoundButton
                   name="cart"
                   path="/checkout"

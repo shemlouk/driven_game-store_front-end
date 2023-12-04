@@ -29,7 +29,6 @@ export const LogoFont = styled.span`
 `;
 
 export const ButtonsContainer = styled.div`
-  width: 160px;
   display: flex;
   justify-content: space-between;
 `;
@@ -111,7 +110,7 @@ export const Username = styled.div`
 
 export const Wrap = styled.div`
   margin-left: 20px;
-  max-width: 370px;
+  max-width: 380px;
   display: flex;
   align-items: center;
   justify-content: right;

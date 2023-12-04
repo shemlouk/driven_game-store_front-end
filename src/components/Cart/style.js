@@ -64,11 +64,12 @@ export const Price = styled.div`
     align-items: center;
     text-align: right;
     color: #FFFFFF;
-    margin-left: 80px;
+    margin-left: 30px;
 `
 export const ContFinalPrice = styled.div`
     display: flex;
     justify-content: space-around;
+    margin-top: 40px;
 `
 export const FinalPrice = styled.div`
     width: 476px;
@@ -111,4 +112,6 @@ export const ConfirmButton = styled.button`
     color: #FFFFFF;
     margin-left: 23px;
     border: none;
+    padding: 0px 20px;
+    cursor: pointer;
 `
