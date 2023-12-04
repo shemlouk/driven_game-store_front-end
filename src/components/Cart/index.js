@@ -52,6 +52,7 @@ const Cart = ({ handleClick, componentToShow }) => {
     return found;
   });
 
+  console.log(filteredProducts);
   return (
     <div componentToShow={componentToShow}>
       <Title>Summary</Title>
@@ -75,8 +76,10 @@ const Cart = ({ handleClick, componentToShow }) => {
                 {product.plataforms.map((p) => {
                   return p === "mac" ? (
                     <Apple size="17" color="white" variant="Bold" />
-                  ) : (
+                  ) : p === "windows" ? (
                     <Windows size="17" color="white" variant="Bold" />
+                  ) : (
+                    ""
                   );
                 })}
               </ContOS>
@@ -88,7 +91,8 @@ const Cart = ({ handleClick, componentToShow }) => {
         <FinalPrice>
           <Total>Total: </Total>
           <TotalPrice>
-            R$ {filteredProducts.reduce((pv, cv) => pv + cv.price, 0)}
+            R${" "}
+            {filteredProducts.reduce((pv, cv) => pv + cv.price, 0).toFixed(2)}
           </TotalPrice>
         </FinalPrice>
         <ConfirmButton onClick={handleClick}>Confirm</ConfirmButton>

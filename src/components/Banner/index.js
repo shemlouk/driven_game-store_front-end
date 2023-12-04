@@ -8,7 +8,6 @@ const Banner = ({ _id, image, name, price }) => {
       <S.Price>
         {!price ? "Free" : "R$ " + new Intl.NumberFormat("pt-BR").format(price)}
       </S.Price>
-      <S.Button>Buy</S.Button>
     </S.Container>
   );
 };
