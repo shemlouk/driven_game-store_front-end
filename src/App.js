@@ -3,7 +3,7 @@ import ProductsContext from "./hooks/ProductsContext";
 import SessionContext from "./hooks/SessionContext";
 import Checkout from "./pages/Checkout";
 import Header from "./layout/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Home from "./pages/Home";
 
 function App() {
@@ -12,9 +12,21 @@ function App() {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
 
+  function updateSession(login) {
+    localStorage.setItem("session", JSON.stringify(login));
+    setSession(login);
+  }
+
+  useEffect(() => {
+    const localSession = localStorage.getItem("session");
+    if (localSession) setSession(JSON.parse(localSession));
+  }, []);
+
   return (
-    <SessionContext.Provider value={{ ...session, setSession }}>
-      <ProductsContext.Provider value={{ cart, setCart, products, setProducts, library, setLibrary }}>
+    <SessionContext.Provider value={{ ...session, setSession: updateSession }}>
+      <ProductsContext.Provider
+        value={{ cart, setCart, products, setProducts, library, setLibrary }}
+      >
         <BrowserRouter>
           <Header />
           <Routes>
